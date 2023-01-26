@@ -1,7 +1,6 @@
 from machinetranslation import translator
 from flask import Flask, render_template, request
 import json
-from machinetranslation import english_to_french, french_to_english
 
 app = Flask("Web Translator")
 
@@ -9,13 +8,13 @@ app = Flask("Web Translator")
 def englishToFrench():
     textToTranslate = request.args.get('textToTranslate')
     # Write your code here
-    return english_to_french(textToTranslate)
+    return translator.english_to_french(textToTranslate)
 
 @app.route("/frenchToEnglish")
 def frenchToEnglish():
     textToTranslate = request.args.get('textToTranslate')
     # Write your code here
-    return french_to_english(textToTranslate)
+    return translator.french_to_english(textToTranslate)
 
 @app.route("/")
 def renderIndexPage():
